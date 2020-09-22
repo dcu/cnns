@@ -116,7 +116,9 @@ func (wh *WholeNet) ImportFromFile(fname string, randomWeights bool) error {
 			fullyconnected := NewFullyConnectedLayer(&tensor.TDsize{X: x, Y: y, Z: z}, outSize)
 			if randomWeights == false {
 				var weights *tensor.Tensor
-				weights = tensor.NewTensor(x*y*z, outSize, 1)
+				weightsSize := data.Network.Layers[i].Weights[0].TDSize
+
+				weights = tensor.NewTensor(weightsSize.Total(), outSize, 1)
 				weights.SetData3D(data.Network.Layers[i].Weights[0].Data)
 				fullyconnected.SetCustomWeights([]*tensor.Tensor{weights})
 			}
