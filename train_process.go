@@ -91,14 +91,3 @@ func (n *WholeNet) Train(inputs []*tensor.Tensor, desired []*tensor.Tensor, test
 
 	return trainError, testError, err
 }
-
-func maxIdx(tt *tensor.Tensor) (max int) {
-	maxF := 0.0
-	for i := range tt.Data {
-		if maxF < tt.Data[i] {
-			maxF = tt.Data[i]
-			max = i
-		}
-	}
-	return max
-}
