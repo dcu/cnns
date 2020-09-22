@@ -192,9 +192,9 @@ func (wh *WholeNet) ExportToFile(fname string) error {
 	}
 
 	// Hardcoded training parameters
-	save.Parameters.LearningRate = 0.01
-	save.Parameters.Momentum = 0.6
-	save.Parameters.WeightDecay = 0.001
+	save.Parameters.LearningRate = lp.LearningRate
+	save.Parameters.Momentum = lp.Momentum
+	save.Parameters.WeightDecay = lp.WeightDecay
 
 	saveJSON, err := json.Marshal(save)
 	if err != nil {
